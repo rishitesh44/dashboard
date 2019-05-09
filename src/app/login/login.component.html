@@ -1,0 +1,38 @@
+
+<strong class="o">Create Question </strong>
+<br>
+
+  <mat-form-field class="y"> 
+      <mat-label >Question Domian</mat-label>
+         <mat-select [formControl]="animalControl" required >
+           <mat-option *ngFor="let domains of domain" [value]="domains.value">
+          {{domains.viewValue}}
+          </mat-option>
+      </mat-select>
+      <mat-error *ngIf="animalControl.hasError('required')">Please choose a department</mat-error>
+    </mat-form-field>
+    <br>
+
+    
+    
+  
+        <mat-form-field  appearance="outline" class="i" hintLabel="Max 100 characters">
+          <input matInput #input maxlength="100" placeholder="Question" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline" class="iu" hintLabel="Max 3minutes">
+          <input type="time" matInput #input max="03:00" ng-minlength="1" 
+          ng-maxlength="4" ng-value="(minutes > 4 ? minutes = 0 : minutes)" placeholder="Timer" [formControl]="emails" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      
+        </mat-form-field>
+   
+   
+      <br>
+      <strong class="k">(Max 3minutes)</strong>
+    <button mat-raised-button class="rxt" (click)="close()">Cancel</button>
+    <button mat-raised-button class="rx" (click)="ri()">Save</button>
+  
+      

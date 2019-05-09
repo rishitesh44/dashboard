@@ -1,0 +1,67 @@
+
+        
+         
+  
+        
+              <strong class="q">QUESTIONS   </strong>
+              <strong class="q1"><strong>Department:</strong> Marketing and Sales  </strong>
+              <strong class="q11"><strong>Positions:</strong> Operations Manager Jr  </strong>
+              <button mat-stroked-button class="ed" (click)="openDialog()">+QA ADD QUESTION</button>
+              <mat-icon class="p" >search</mat-icon>
+
+              <mat-form-field class="a">  
+                  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Question" >
+                </mat-form-field>
+             
+            <div class="po">
+                <mat-table #table [dataSource]="dataSource">
+                  <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? masterToggle() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                      </mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)">
+                      </mat-checkbox>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="QuestionId">
+                    <mat-header-cell *matHeaderCellDef> Question Id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.QuestionId}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Question">
+                    <mat-header-cell *matHeaderCellDef> Question </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Question}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Duration">
+                    <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Duration}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="createddate">
+                    <mat-header-cell *matHeaderCellDef> Created Date</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.createddate}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="updateddate">
+                      <mat-header-cell *matHeaderCellDef> Updated Date </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.updateddate}} </mat-cell>
+                    </ng-container>
+                  <ng-container matColumnDef="actions">
+                      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> 
+                      <button mat-icon-button color="warn"  (click)="removeSelectedRows()"><mat-icon>delete_outline</mat-icon></button>  
+                      <button mat-icon-button  (click)="openDialog()"><mat-icon>edit</mat-icon></button>  
+                      </mat-cell>
+                    </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"
+                           (click)="selection.toggle(row)">
+                  </mat-row>
+                </mat-table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+              https://stackblitz.com/edit/angular-5zu7px
+              <!-- <router-outlet></router-outlet> -->

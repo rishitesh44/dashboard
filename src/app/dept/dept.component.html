@@ -1,0 +1,29 @@
+
+<mat-card class="l">
+<h5 class="r">Department:</h5>
+  <mat-form-field class="p">
+    <mat-label>Department</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h5 class="t">Positions:</h5>
+<mat-form-field class="i">
+  <mat-label>position</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let position of positions" [value]="position.value">
+      {{position.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button class="o" routerLink="/sidenav">Go</button>
+<hr width="1" size="120" class="y">
+<button mat-raised-button class="u" (click)="openDialog()" >Create New</button>
+</mat-card>
+<router-outlet></router-outlet>
+
+
+
+
